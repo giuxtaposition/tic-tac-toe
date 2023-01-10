@@ -1,10 +1,12 @@
-import { useState } from "react"
 import Square from "./Square"
 
-export default function Board() {
-    const [xIsNext, setXIsNext] = useState(true)
-    const [squares, setSquares] = useState(Array(9).fill(null))
+interface BoardProps {
+    xIsNext: boolean
+    squares: Array<string | null>
+    onPlay: (nextSquares: Array<string | null>) => void
+}
 
+export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
     function handleClick(i: number) {
         if (squares[i] || calculateWinner(squares)) {
             return
@@ -15,8 +17,7 @@ export default function Board() {
         } else {
             nextSquares[i] = "O"
         }
-        setSquares(nextSquares)
-        setXIsNext(!xIsNext)
+        onPlay(nextSquares)
     }
 
     const winner = calculateWinner(squares)
