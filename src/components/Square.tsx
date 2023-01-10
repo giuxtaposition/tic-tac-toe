@@ -5,7 +5,11 @@ interface SquareProps {
 
 export default function Square({ value, onSquareClick }: SquareProps) {
     return (
-        <button className={`${value} square`} onClick={onSquareClick}>
+        <button
+            className={`${value} square`}
+            onClick={onSquareClick}
+            data-testid='square'
+        >
             {value}
         </button>
     )
