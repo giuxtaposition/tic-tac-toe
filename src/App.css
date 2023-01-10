@@ -68,12 +68,33 @@ button {
     touch-action: manipulation;
 }
 
-.current {
-    background-color: rgba(1, 108, 238, 0.137);
+li {
+    background-color: rgba(51, 51, 51, 0.05);
     border-radius: 8px;
     border-width: 0;
     color: #333333;
     margin: 0;
     padding: 10px 12px;
     white-space: nowrap;
+}
+
+.current {
+    background-color: rgba(1, 108, 238, 0.137);
+}
+
+table {
+    margin: 0.5rem;
+}
+
+td {
+    border: 1px solid;
+    height: 2rem;
+    width: 2rem;
+    text-align: center;
+}
+
+button.history-table {
+    margin-left: 0.5rem;
+    font-size: 2rem;
+    background-color: transparent;
 }

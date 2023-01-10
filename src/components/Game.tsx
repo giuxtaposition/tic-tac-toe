@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Board from "./Board"
+import HistoryTable from "./HistoryTable"
 
 export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)])
@@ -36,6 +37,7 @@ export default function Game() {
                 <button onClick={() => jumpTo(move)}>
                     {move > 0 ? "Go to move #" + move : "Go to game start"}
                 </button>
+                <HistoryTable squares={history[move]}></HistoryTable>
             </li>
         )
     })
