@@ -1,20 +1,67 @@
 .square {
     background: #fff;
-    border: 1px solid #999;
+    border: 2px solid black;
     float: left;
-    font-size: 24px;
+    font-size: 3rem;
     font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
+    height: 5rem;
+    width: 5rem;
     padding: 0;
     text-align: center;
-    width: 34px;
+    border-radius: 0px;
+}
+
+.square.X {
+    background-color: #ff5c7d;
+}
+
+.square.O {
+    background-color: #a0e4a5;
 }
 
 .board-row:after {
     clear: both;
     content: "";
     display: table;
+}
+
+.status {
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.game {
+    display: flex;
+    flex-direction: row;
+}
+
+.game-info {
+    margin-left: 20px;
+}
+
+.game-info li {
+    margin: 0.5rem;
+}
+
+button {
+    background-color: rgba(51, 51, 51, 0.05);
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+        sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
