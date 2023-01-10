@@ -1,12 +1,15 @@
 interface SquareProps {
     value: string | null
     onSquareClick: () => void
+    winner: boolean
 }
 
-export default function Square({ value, onSquareClick }: SquareProps) {
+export default function Square({ value, onSquareClick, winner }: SquareProps) {
     return (
         <button
-            className={`${value} square`}
+            className={`${value ? `${value}` : ""} ${
+                winner ? "winner" : ""
+            } square`}
             onClick={onSquareClick}
             data-testid='square'
         >

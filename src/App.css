@@ -19,6 +19,10 @@
     background-color: #a0e4a5;
 }
 
+.square.winner {
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.613));
+}
+
 .board-row:after {
     clear: both;
     content: "";

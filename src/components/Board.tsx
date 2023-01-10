@@ -22,10 +22,12 @@ export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
 
     const winner = calculateWinner(squares)
     let status
-    if (winner) {
-        status = "Winner: " + winner
-    } else {
+    if (winner?.length) {
+        status = "Winner: " + squares[winner[0]]
+    } else if (!winner) {
         status = "Next player: " + (xIsNext ? "X" : "O")
+    } else {
+        status = "Draw"
     }
 
     return (
@@ -35,6 +37,11 @@ export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
                 <div className='board-row' key={row}>
                     {[...Array(3)].map((_, column) => (
                         <Square
+                            winner={
+                                winner
+                                    ? winner?.includes(column + row * 3)
+                                    : false
+                            }
                             value={squares[column + row * 3]}
                             onSquareClick={() => handleClick(column + row * 3)}
                             key={column + row * 3}
@@ -64,8 +71,11 @@ function calculateWinner(squares: Array<string | null>) {
             squares[a] === squares[b] &&
             squares[a] === squares[c]
         ) {
-            return squares[a]
+            return [a, b, c]
         }
     }
+
+    if (!squares.filter(value => value === null).length) return []
+
     return null
 }

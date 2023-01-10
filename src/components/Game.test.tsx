@@ -27,7 +27,7 @@ describe("Game", () => {
         expect(screen.getAllByTestId("square")[0].textContent).toBe("X")
     })
 
-    test("calculate winner", () => {
+    test("Win case", () => {
         render(<Game />)
 
         fireEvent.click(screen.getAllByTestId("square")[0])
@@ -37,6 +37,31 @@ describe("Game", () => {
         fireEvent.click(screen.getAllByTestId("square")[2])
 
         expect(screen.getByText("Winner: X")).toBeDefined()
+        expect(
+            screen.getAllByTestId("square")[0].classList.contains("winner")
+        ).toBeTruthy()
+        expect(
+            screen.getAllByTestId("square")[1].classList.contains("winner")
+        ).toBeTruthy()
+        expect(
+            screen.getAllByTestId("square")[2].classList.contains("winner")
+        ).toBeTruthy()
+    })
+
+    test("Draw case", () => {
+        render(<Game />)
+
+        fireEvent.click(screen.getAllByTestId("square")[0])
+        fireEvent.click(screen.getAllByTestId("square")[2])
+        fireEvent.click(screen.getAllByTestId("square")[1])
+        fireEvent.click(screen.getAllByTestId("square")[3])
+        fireEvent.click(screen.getAllByTestId("square")[5])
+        fireEvent.click(screen.getAllByTestId("square")[4])
+        fireEvent.click(screen.getAllByTestId("square")[6])
+        fireEvent.click(screen.getAllByTestId("square")[7])
+        fireEvent.click(screen.getAllByTestId("square")[8])
+
+        expect(screen.getByText("Draw")).toBeDefined()
     })
 
     test("go back to move", () => {
