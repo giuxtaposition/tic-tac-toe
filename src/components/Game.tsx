@@ -19,7 +19,11 @@ export default function Game() {
 
     const moves = history.map((_, move) => {
         if (move === currentMove) {
-            return <li className='current'>You are at move #{move}</li>
+            return (
+                <li key={move} className='current'>
+                    You are at move #{move}
+                </li>
+            )
         }
 
         return (
