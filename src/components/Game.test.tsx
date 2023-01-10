@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react"
+import { fireEvent, render, screen, within } from "@testing-library/react"
 import Game from "./Game"
 
 describe("Game", () => {
@@ -73,5 +73,50 @@ describe("Game", () => {
             screen.getAllByTestId("square").filter(value => !value.textContent)
                 .length
         ).toBe(9)
+    })
+
+    test("change game history to desc order", () => {
+        render(<Game />)
+
+        fireEvent.click(screen.getAllByTestId("square")[0])
+        fireEvent.click(screen.getAllByTestId("square")[5])
+
+        fireEvent.click(screen.getByRole("button", { name: "▲" }))
+
+        expect(screen.getByRole("button", { name: "▼" })).toBeDefined()
+
+        const movesList = screen.getByRole("list", {
+            name: /moves/i,
+        })
+
+        const { getAllByRole } = within(movesList)
+
+        const items = getAllByRole("listitem")
+
+        expect(items[0].textContent).toBe("You are at move #2")
+        expect(items[1].textContent).toBe("Go to move #1")
+        expect(items[2].textContent).toBe("Go to game start")
+    })
+
+    test("change back game history to asc order", () => {
+        render(<Game />)
+
+        fireEvent.click(screen.getAllByTestId("square")[0])
+        fireEvent.click(screen.getAllByTestId("square")[5])
+
+        fireEvent.click(screen.getByRole("button", { name: "▲" }))
+        fireEvent.click(screen.getByRole("button", { name: "▼" }))
+
+        const movesList = screen.getByRole("list", {
+            name: /moves/i,
+        })
+
+        const { getAllByRole } = within(movesList)
+
+        const items = getAllByRole("listitem")
+
+        expect(items[0].textContent).toBe("Go to game start")
+        expect(items[1].textContent).toBe("Go to move #1")
+        expect(items[2].textContent).toBe("You are at move #2")
     })
 })

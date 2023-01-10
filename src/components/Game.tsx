@@ -4,6 +4,7 @@ import Board from "./Board"
 export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)])
     const [currentMove, setCurrentMove] = useState(0)
+    const [orderIsAsc, setOrderIsAsc] = useState(true)
     const currentSquares = history[currentMove]
     const xIsNext = currentMove % 2 === 0
 
@@ -15,6 +16,10 @@ export default function Game() {
 
     function jumpTo(nextMove: number) {
         setCurrentMove(nextMove)
+    }
+
+    function changeOrder() {
+        setOrderIsAsc(!orderIsAsc)
     }
 
     const moves = history.map((_, move) => {
@@ -45,7 +50,11 @@ export default function Game() {
                 />
             </div>
             <div className='game-info'>
-                <ol>{moves}</ol>
+                Order:{" "}
+                <button onClick={changeOrder}>{orderIsAsc ? "▲" : "▼"}</button>
+                <ol aria-label='moves'>
+                    {orderIsAsc ? moves : moves.reverse()}
+                </ol>
             </div>
         </div>
     )

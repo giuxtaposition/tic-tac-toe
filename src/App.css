@@ -41,6 +41,7 @@
 
 .game-info li {
     margin: 0.5rem;
+    transition: all 200ms;
 }
 
 button {
