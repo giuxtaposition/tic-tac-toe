@@ -12,6 +12,7 @@ export default function Square({ value, onSquareClick, winner }: SquareProps) {
             } square`}
             onClick={onSquareClick}
             data-testid='square'
+            aria-label='game square'
         >
             {value}
         </button>
