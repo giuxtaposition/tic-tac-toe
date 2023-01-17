@@ -2,6 +2,8 @@
     "name": "tic-tac-toe",
     "version": "0.1.0",
     "private": true,
+    "author": "giuxtaposition",
+    "homepage": "https://giuxtaposition.github.io/tic-tac-toe/",
     "dependencies": {
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^13.0.0",
@@ -17,6 +19,8 @@
         "web-vitals": "^2.1.0"
     },
     "scripts": {
+        "predeploy": "yarn build",
+        "deploy": "gh-pages -d build",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "serve": "serve -s build",
@@ -40,5 +44,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "gh-pages": "^4.0.0"
     }
 }

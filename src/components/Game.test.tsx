@@ -119,8 +119,8 @@ describe("Game", () => {
         const items = getAllByRole("listitem")
 
         expect(items[0].textContent).toBe("You are at move #2")
-        expect(items[1].textContent).toBe("Go to move #1")
-        expect(items[2].textContent).toBe("Go to game start")
+        expect(items[1].textContent).toBe("Go to move #1⌄")
+        expect(items[2].textContent).toBe("Go to game start⌄")
     })
 
     test("change back game history to asc order", () => {
@@ -140,8 +140,8 @@ describe("Game", () => {
 
         const items = getAllByRole("listitem")
 
-        expect(items[0].textContent).toBe("Go to game start")
-        expect(items[1].textContent).toBe("Go to move #1")
+        expect(items[0].textContent).toBe("Go to game start⌄")
+        expect(items[1].textContent).toBe("Go to move #1⌄")
         expect(items[2].textContent).toBe("You are at move #2")
     })
 })
